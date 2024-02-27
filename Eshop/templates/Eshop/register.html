@@ -1,0 +1,39 @@
+{% extends 'Eshop/base.html'%}
+{% block content %}
+<section class="gradient-custom" style="background: linear-gradient(to right, #864d25, #eaa79c);">
+    <div class="container-form">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-5">
+                <div class="card bg-dark text-white" style="border-radius: 3rem;">
+                    <div class="card-body p-5">
+                        <div class="mb-md-4 mt-md-4">
+                            <h2 class="fw-bold mb-5 text-uppercase">Register</h2>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{form.as_p}}
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-outline btn-lg mt-4 px-5"
+                                        style="background-color:#eaa79c; width: 100%;"" type=" submit">Submit</button>
+                                </div>
+                            </form>
+                            <div>
+                                <p class="mt-5" style="text-align: center">
+                                    Already have an account ?
+                                    <a href="{% url 'login' %}" class="text-white-50 fw-bold"
+                                        style="text-decoration: none;">
+                                        Login Now !
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+{% endblock content %}
