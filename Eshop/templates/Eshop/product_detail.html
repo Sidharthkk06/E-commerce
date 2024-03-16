@@ -1,24 +1,23 @@
 {% extends 'Eshop/base.html' %}
-{% load static %}
 
 {% block content %}
 
-<section>
-    <div class="container-product">
+<div class="container">
+    <div class="products">
         <div class="row">
             <div class="col-lg-5 col-md-6 col-sm-6 d-flex">
                 <a style="text-decoration: none;" href=""></a>
                 <div class="card w-100 my-2 shadow-2-strong">
-                    <img src="{{data.product_image.url}}" class="card-img-top">
+                    <img src="{{product.product_image.url}}" class="card-img-top">
                     <div class="card-title d-flex flex-column">
                         <h5 class="card-title" style="text-align:left; padding-left: 15px;">
-                            <b>{{data.product_name}}</b>
+                            <b>{{products.product_name}}</b>
                         </h5>
                         <p class="card-text"><span
                                 style="text-align: left; font-size: larger; padding-left: 15px;"><b>Rs.
-                                    {{data.selling_price}}</b></span><span
+                                    {{product.selling_price}}</b></span><span
                                 style="text-align: left; padding-left: 15px;"><s>Rs.
-                                    {{data.original_price}}</s></span></p>
+                                    {{product.original_price}}</s></span></p>
                     </div>
                     <div class="input-group mx-auto" style="width: 150px; ">
                         <button class="input-group-text bg-light text-dark"><i class="fa-solid fa-plus"></i></button>
@@ -28,18 +27,18 @@
                     </div>
                     <div class="row">
                         <div class="col" style="padding: 10px; width: 100%;">
-                            <botton class="btn btn-outline-primary"><a
-                                    href="{% url 'cart' data.id %}"><span style="text-align: left;">Add to
+                            <botton class="btn btn-outline-primary"><a href="{% url 'cart' product.id%}"><span
+                                        style="text-align: left;">Add to
                                         Cart</a></span></botton>
                         </div>
                         <div class="col" style="padding: 10px;">
                             <button class="btn btn-outline-primary mx-auto"><a href="#">Buy Now</a></button>
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 {% endblock content %}

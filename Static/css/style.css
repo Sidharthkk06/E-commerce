@@ -1,0 +1,23 @@
+.container {
+    margin-top: 59.2px;
+    padding-top: 30px;
+}
+
+.container-fluid {
+    padding: 0px 50px;
+}
+
+.container-form {
+    padding: 100px;
+}
+
+.container-product {
+    padding: 55px;
+}
+
+.item-card {
+    padding: 10px 0px;
+}
+.carousel {
+    margin-top: 59.2px;
+}

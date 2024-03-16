@@ -25,8 +25,8 @@ class CategoryDetail(CreateView):
 class ProductDetail(View):
     def get(self, request, *args, **kwargs):
         pid = kwargs.get('pid')
-        data = Product.objects.get(id=pid)
-        return render(request,"Eshop/product_detail.html",{'data':data})
+        product = Product.objects.get(id=pid)
+        return render(request,"Eshop/product_detail.html",{'product':product})
     
 
 class RegisterView(CreateView):
@@ -60,23 +60,33 @@ class SignOutView(View):
         return redirect("home")
     
 
-class AddtoCartView(View):
+class AddToCart(View):
     def get(self, request, *args, **kwargs):
-        id = kwargs.get('pid')
-        data = Product.objects.get(id=id)
-        Cart.objects.create(item=data, user=request.user)
+        item_id = kwargs.get('pid')
+        product = Product.objects.get(id=item_id)
+        Cart.objects.create(item=product, user=request.user)
         messages.success(request, "added sucessfully")
         return redirect("home")
     
 
 class CartDelete(View):
     def get(self, request,*args,**kwargs):
-        id = kwargs.get("pid")
-        Cart.objects.get(id=id).delete()
-        return redirect("home")
+        item_id = kwargs.get("pid")
+
+        # Delete the cart item
+        Cart.objects.get(id=item_id).delete()
+        messages.success(request, "Ithem removed from cart sucessfully")
+        # Fetch updated cart items after deletion
+        updated_cart_items = Cart.objects.filter(user=request.user)
+
+        # Render the cart template with updated cart items
+        return render(request, "Eshop/cart.html",{"item":updated_cart_items})
     
 
 class CartDetail(View):
     def get(self, request, *args, **kwargs):
-        data = Cart.objects.filter(user=request.user)
-        return render(request,"Eshop/cart.html",{"data":data})
+        if request.user.is_authenticated:
+            item = Cart.objects.filter(user=request.user)
+            return render(request,"Eshop/cart.html",{"item":item})
+        else:
+            return redirect('register')  # Redirect to the register page if the user is not authenticated
