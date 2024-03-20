@@ -1,10 +1,13 @@
 .container {
     margin-top: 59.2px;
-    padding-top: 30px;
 }
 
 .container-fluid {
     padding: 0px 50px;
+}
+
+.bottom-navbar {
+    margin-top: 59.2px;
 }
 
 .container-form {
@@ -17,7 +20,4 @@
 
 .item-card {
     padding: 10px 0px;
-}
-.carousel {
-    margin-top: 59.2px;
 }
