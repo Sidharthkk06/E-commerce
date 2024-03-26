@@ -1,7 +1,11 @@
 {% extends 'Eshop/base.html'%}
 {% block content %}
+
 <section class="gradient-custom" style="background: linear-gradient(to right, #864d25, #eaa79c);">
     <div class="container-form">
+        {% for message in messages %}
+        <h1>{{ message }}</h1>
+        {% endfor %}
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-lg-5">
                 <div class="card bg-dark text-white" style="border-radius: 3rem;">
@@ -15,7 +19,7 @@
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-outline btn-lg mt-4 px-5"
-                                        style="background-color:#eaa79c; width: 100%;"" type=" submit">Submit</button>
+                                        style="background-color:#eaa79c; width: 100%;" type=" submit">Submit</button>
                                 </div>
                             </form>
                             <div>

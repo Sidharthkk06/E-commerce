@@ -64,9 +64,13 @@ class AddToCart(View):
     def get(self, request, *args, **kwargs):
         item_id = kwargs.get('pid')
         product = Product.objects.get(id=item_id)
-        Cart.objects.create(item=product, user=request.user)
-        messages.success(request, "added sucessfully")
-        return redirect("home")
+        if request.user.is_authenticated:
+            Cart.objects.create(item=product, user=request.user)
+            messages.success(request, "added sucessfully")
+            return redirect("cart_detail")
+        else:
+            messages.error(request, "Please Login First to add items to the cart")
+            return redirect("register")
     
 
 class CartDelete(View):
@@ -75,7 +79,7 @@ class CartDelete(View):
 
         # Delete the cart item
         Cart.objects.get(id=item_id).delete()
-        messages.success(request, "Ithem removed from cart sucessfully")
+        messages.success(request, "Item removed from cart sucessfully")
         # Fetch updated cart items after deletion
         updated_cart_items = Cart.objects.filter(user=request.user)
 

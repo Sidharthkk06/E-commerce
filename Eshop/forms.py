@@ -4,14 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class RegisterForm(UserCreationForm):
-    password1 = forms.CharField(
-        label='Password',
-        widget=forms.PasswordInput(attrs={'class': 'form-control form-control-md mt-2'})
-    )
-    password2 = forms.CharField(
-        label='Confirm Password',
-        widget=forms.PasswordInput(attrs={'class': 'form-control form-control-md mt-2'})
-    )
 
     class Meta:
         model = User
@@ -21,6 +13,8 @@ class RegisterForm(UserCreationForm):
             "last_name": forms.TextInput(attrs={"class":"form-control form-control-md mt-2","placeholder":"Last Name"}),
             "email": forms.EmailInput(attrs={"class":"form-control form-control-md mt-2","placeholder":"Email"}),
             "username": forms.TextInput(attrs={"class":"form-control form-control-md mt-2","placeholder":"Username"}),
+            "password1": forms.PasswordInput(attrs={"class":"form-control form-control-md mt-2","placeholder":"password"}),
+            "password2": forms.PasswordInput(attrs={"class":"form-control form-control-md mt-2","placeholder":"password"}),
         }
 
 

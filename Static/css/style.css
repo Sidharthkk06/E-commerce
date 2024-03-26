@@ -1,13 +1,11 @@
-.container {
+.container,
+.bottom-navbar,
+.category-carousel-slide {
     margin-top: 59.2px;
 }
 
 .container-fluid {
     padding: 0px 50px;
-}
-
-.bottom-navbar {
-    margin-top: 59.2px;
 }
 
 .container-form {
